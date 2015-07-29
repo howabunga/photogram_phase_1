@@ -14,18 +14,12 @@ class PhotosController < ApplicationController
   def edit
 
     @edit = params["id"]
+    p = Photo.find_by({ :id => @edit })
+    p.caption = "#{@caption}"
+    p.source = "#{@source}"
+    p.save
 
     render("edit.html.erb")
-
-    Photo.find({ :id => @edit })
-    Photo.caption = "#{@caption}"
-    Photo.save
-
-    Photo.find({ :id => @edit })
-    Photo.caption = "#{@source}"
-    Photo.save
-
-    redirect_to("/photos")
 
   end
 
@@ -41,14 +35,14 @@ class PhotosController < ApplicationController
 
   def new
 
-    render("new.html.erb")
-
     p = Photo.new
     p.caption = @caption
     p.source = @source
     p.save
 
     redirect_to("/photos")
+
+    render("new.html.erb")
 
   end
 
