@@ -11,36 +11,36 @@ class PhotosController < ApplicationController
 
   end
 
-  def edit
+  # def edit
 
-    @edit = params["id"]
-    p = Photo.find_by({ :id => @edit })
-    p.caption = "#{@caption}"
-    p.source = "#{@source}"
-    p.save
+  #   @edit = params["id"]
+  #   p = Photo.find_by({ :id => @edit })
+  #   p.caption = "#{@caption}"
+  #   p.source = "#{@source}"
+  #   p.save
 
-    render("edit.html.erb")
+  #   render("edit.html.erb")
 
-  end
+  # end
+
+  # IGNORE EDIT SECTION - DID NOT READ INSTRUCTIONS CLEARLY IN ADVANCE
 
   def destroy
 
     @destroy = params["id"]
 
-    Photo.find_by({ :id => @destroy }).destroy
+    Photo.find(@destroy).destroy
 
     redirect_to("/photos")
 
   end
 
-  def new
+  def new_form
 
     p = Photo.new
     p.caption = @caption
     p.source = @source
     p.save
-
-    redirect_to("/photos")
 
     render("new.html.erb")
 

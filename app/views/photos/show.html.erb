@@ -1,13 +1,10 @@
 <h1>Photo Details</h1>
 
-<img src="<%= (Photo.find_by({ :id => @show })).source %>">
+<img src="<%= (Photo.find(@show)).source %>">
 
-<div>
-  <td><%= Photo.find_by({ :id => @show }).caption %></td>
-</div>
+<p><%= (Photo.find(@show)).caption %></p>
 
-<div>
-  <td><a href="/photos">Back</a></td>
-  <td><a href="/photos/:id/edit">Edit</a></td>
-  <td><a href="/delete_photo/:id">Delete</a></td>
-</div>
+<td><a href="/photos">Back</a></td>
+<td><a href="/photos/<%= (Photo.find(@show)).id %>/edit">Edit</a></td>
+<td><a href="/delete_photo/<%= (Photo.find(@show)).id %>">Delete</a></td>
+
